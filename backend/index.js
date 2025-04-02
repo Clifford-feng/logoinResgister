@@ -8,6 +8,7 @@ dotenv.config();
 
 import { login } from './src/api/login.js';
 import { register } from './src/api/register.js';
+import { getUsers, getUserById } from './src/api/users.js';
 import { authToken } from './src/utils/authToken.js';
 
 const app = express();
@@ -24,6 +25,8 @@ app.get('/health', (req, res) => {
 app.post('/api/login',authToken, login);
 app.post('/api/register', register);
 
+app.get("/api/users", getUsers);
+app.get("/api/users/:userId", getUserById);
 
 
 // Prisma 错误处理中间件

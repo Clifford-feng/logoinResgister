@@ -42,6 +42,12 @@ dom.signOutBtn.addEventListener("click", signOut)
 async function login(event){
     event.preventDefault()
 
+    const response = await axios.get(`${backendPath}/api/users`);
+    const users = response.data;
+
+
+    console.log(users);
+
     if(isInputHasContent([dom.username, dom.password]) === -1){
         animation.showError()
         return
